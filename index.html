@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ISREXWEB</title>
+</head>
+<body>
+    <section>
+        <div class="container text-center d-flex align-items-center justify-content-center into_section">
+            <div class="row align-items-center card g-4">
+                <!--Главные кнопки -->
+                <button type="button" class="btn btn-success col-8  align-self-center mx-auto" id="main_menu_fiat">Купить валюту </button>
+                <button type="button" class="btn btn-success col-8 align-self-center mx-auto" id="main_menu_crypto">Купить криптовалюту</button>
+                <button type="button" class="btn btn-success col-8 align-self-center mx-auto" id="main_menu_refill">Пополнить Израильский банковский счёт</button> 
+                <!--Форма фиат -->
+                <form class="invisible" id="fiat_order" action="/apply/" method="POST">       
+                    <select class="form-select mb-3 btn-success" aria-label="Default select example" name="fiat_buy" id="fiat_buy">
+                        <option selected>Какая валюта вам необходима?</option>
+                        <option value="Шекель нал">Израильский Шекель ₪ (наличными)</option>
+                        <option value="Рубль карта">Российский Рубль ₽ (безнал)</option>
+                        <option value="Гривна карта">Украинская Гривна ₴ (безнал)</option>
+                        <option value="Доллар нал">Доллар США $ наличными</option>
+                        <option value="Другая">Другая</option>
+                    </select>
+                    <input type="text" class="form-control mb-3 btn-success invisible" name="fiat_buy_another" id="fiat_buy_another" placeholder="Другая">
+                    <select class="form-select mb-3 btn-success " aria-label="Default select example" name="fiat_sell" id="fiat_sell">
+                            <option selected>Какую валюту вы отдаете?</option>
+                            <option value="Шекель">Израильский Шекель ₪</option>
+                            <option value="Рубль">Российский рубль ₽</option>
+                            <option value="Гривна">Украинская Гривна ₴ (безнал)</option>
+                            <option value="Доллар">Доллар США $</option>
+                            <option value="Дирхам">Дирхам د.إ</option>
+                            <option value="Лари">Лари ₾</option>
+                            <option value="Лира">Лира ₺</option>
+                        </select>
+                    <input type="text" class="form-control mb-3 btn-success" name="fiat_amount" id="fiat_amount" placeholder="Какая сумма?">
+                    <select class="form-select mb-3 btn-success" aria-label="Default select example" name="fiat_cash_card" id="fiat_cash_card">
+                            <option selected>Наличными или на карте?</option>
+                            <option value="cash">Наличные</option>
+                            <option value="card">На карте</option>
+                        </select>
+                    <input type="text" class="form-control mb-3 btn-success invisible" name="fiat_bank" id="fiat_bank" placeholder="Введите название вашего банка">
+                    <input type="text" class="form-control mb-3 btn-success invisible" name="fiat_city" id="fiat_city" placeholder="В каком городе?">
+                    <input type="text" class="form-control mb-3 btn-success" name="fiat_name" id="fiat_name" placeholder="Как к вам обращаться?">
+                    <input type="text" class="form-control mb-3 btn-success" name="fiat_phone" id="fiat_phone" placeholder="Укажите ваш номер телефона">
+                    <button type="button" class="btn btn-success col-8 align-self-center mx-auto" name="fiat_send" id="fiat_send" type="submit">Оставить заявку</button>
+                </form>
+                <!--Форма крипта -->
+                <form class="invisible" id="crypto_order" action="/apply/" method="POST">              
+                    <select class="form-select mb-3 btn-success" aria-label="Default select example" name="crypto_buy" id="crypto_order">
+                        <option selected>Какая криптовалюта вам необходима?</option>
+                        <option value="USDT">Usdt ₮</option>
+                        <option value="BTC">Bitcoin BTC ₿</option>
+                        <option value="ETH">EtheriumETH Ξ</option>
+                        <option value="Binance Coin BNB">Binance Coin BNB</option>
+                    </select>
+                    <select class="form-select mb-3 btn-success" aria-label="Default select example" name="crypto_sell" id="crypto_sell">
+                        <option selected>Какую валюту вы отдаете?</option>
+                        <option value="Шекель">Израильский Шекель ₪</option>
+                        <option value="Рубль">Российский рубль ₽</option>
+                        <option value="Гривна">Украинская Гривна ₴ (безнал)</option>
+                        <option value="Доллар">Доллар США $</option>
+                        <option value="Дирхам">Дирхам د.إ</option>
+                        <option value="Лари">Лари ₾</option>
+                        <option value="Лира">Лира ₺</option>
+                    </select>
+                    <input type="text" class="form-control mb-3 btn-success" name="crypto_amount" id="crypto_amount" placeholder="Какая сумма?">
+                    <select class="form-select mb-3 btn-success" aria-label="Default select example" name="crypto_cash_card" id="crypto_cash_card">
+                        <option selected>Наличными или на карте?</option>
+                        <option value="cash">Наличные</option>
+                        <option value="card">На карте</option>
+                    </select>
+                    <input type="text" class="form-control mb-3 btn-success invisible" name="crypto_bank" id="crypto_bank" placeholder="Введите название вашего банка">
+                    <input type="text" class="form-control mb-3 btn-success invisible" name="crypto_city" id="crypto_city" placeholder="В каком городе?">
+                    <input type="text" class="form-control mb-3  btn-success" name="crypto_name" id="crypto_name" placeholder="Как к вам обращаться?">
+                    <input type="text" class="form-control mb-3  btn-success" name="crypto_phone" id="crypto_phone" placeholder="Укажите ваш номер телефона">
+                    <button type="button" class="btn btn-success col-8 align-self-center mx-auto" name="crypto_send" id="crypto_send" type="submit">Оставить заявку</button>
+                </form>
+                <!--Форма пополнение -->
+                <form class="invisible" id="refill_order" action="/apply/" method="POST">
+                    <input type="text" class="form-control mb-3 btn-success" name="refill_country" id="refill_country" placeholder="В какой стране находится ваша сумма?">
+                    <input type="text" class="form-control mb-3 btn-success" name="refill_fiat_type" id="refill_fiat_type" placeholder="Какая валюта?">
+                    <select class="form-select mb-3 btn-success" aria-label="Default select example" name="refill_cash_card" id="refill_cash_card">
+                        <option selected>Наличными или на карте?</option>
+                        <option value="cash">Наличные</option>
+                        <option value="card">На карте</option>
+                    </select>
+                    <input type="text" class="form-control mb-3 btn-success invisible" name="refill_bank" id="refill_bank" placeholder="Введите название вашего банка">
+                    <input type="text" class="form-control mb-3 btn-success invisible" name="refill_city" id="refill_city" placeholder="В каком городе?">
+                    <input type="text" class="form-control mb-3 btn-success " name="refill_amount" id="refill_amount" placeholder="Какая сумма?">
+                    <select class="form-control mb-3 btn-success" aria-label="Default select example" name="refill_amount_type" id="refill_amount_type">
+                        <option selected>Укажите классификацию денежных средств</option>
+                        <option value="Накопления">Накопления</option>
+                        <option value="Бизнес">Доход от бизнеса</option>
+                        <option value="Недвижимость">Продажа недвижимости</option>
+                        <option value="Машина">Продажа машины</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                    <input type="text" class="form-control mb-3 btn-success invisible" name="refill_amount_type_another" id="refill_amount_type_another" placeholder="Другое">
+                    <input type="text" class="form-control mb-3 btn-success" name="refill_bank_type" id="refill_bank_type" placeholder="На счет какого Израильского банка вам требуется завести сумму?">
+                    <input type="text" class="form-control mb-3 btn-success " name="refill_name" id="refill_name" placeholder="Как к вам обращаться?">
+                    <input type="text" class="form-control mb-3 btn-success " name="refill_phone" id="refill_phone" placeholder="Укажите ваш номер телефона">
+                    <button type="button" class="btn btn-success col-8 align-self-center mx-auto" id="refill_send" type="submit">Оставить заявку</button>
+                </form>                
+            </div> 
+        </div>
+    </section>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src='js/bootstrap.bundle.min.js'></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src='js/app.js'></script>
+</body>
+</html>
