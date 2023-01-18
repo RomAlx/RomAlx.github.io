@@ -2,6 +2,9 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
+tg.MainButton.textColor = #198754;
+tg.MainButton.color = #FFFFFF;
+
 //Инициализация переменных
 
 let main_menu_fiat = document.getElementById("main_menu_fiat");
@@ -21,6 +24,8 @@ let refill_send = document.getElementById("refill_send");
 let fiat_order = document.getElementById("fiat_order");
 let crypto_order = document.getElementById("crypto_order");
 let refill_order = document.getElementById("refill_order");
+
+let item = "";
 
 //Выбор нужной формы
 
@@ -144,7 +149,11 @@ fiat_send.addEventListener("click", function() {
  	phone: fiat_phone.value
  };
  
-  console.log(fiat_values);
+ item = fiat_values;
+ console.log(fiat_values);
+
+ document.getElementById("fiat_order").classList.add("invisible");
+ document.getElementById("thanks").classList.remove("invisible");
 
 });
 
@@ -173,7 +182,11 @@ crypto_send.addEventListener("click", function() {
  	phone: crypto_phone.value
  };
  
-  console.log(crypto_values);
+ item = crypto_values;
+ console.log(crypto_values);
+
+ document.getElementById("crypto_order").classList.add("invisible");
+ document.getElementById("thanks").classList.remove("invisible");
 
 });
 
@@ -208,8 +221,16 @@ refill_send.addEventListener("click", function() {
  	phone: fiat_phone.value
  };
  
-  console.log(refill_values);
+ item = refill_values;
+ console.log(refill_values);
 
+ document.getElementById("refill_order").classList.add("invisible");
+ document.getElementById("thanks").classList.remove("invisible");
+
+});
+
+Telegram.WebApp,onEvent("mainButtonClicked", function(){
+	tg.sendData(item);
 });
 
 
